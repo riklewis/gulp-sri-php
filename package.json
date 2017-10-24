@@ -1,0 +1,46 @@
+{
+  "name": "gulp-sri-php",
+  "version": "0.0.1",
+  "description": "Scan PHP files in Gulp and process script and stylesheet tags to add SRI attributes",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riklewis/gulp-sri-php.git"
+  },
+  "keywords": [
+    "gulp",
+    "html",
+    "sri",
+    "php",
+    "hash",
+    "gulpplugin",
+    "sub",
+    "resource",
+    "integrity"
+  ],
+  "author": {
+    "name": "Rik Lewis",
+    "email": "rik@rik.onl"
+  },
+  "homepage": "https://github.com/riklewis/gulp-sri-php",
+  "bugs": {
+    "url": "https://github.com/riklewis/gulp-sri-php/issues",
+    "email": "rik@rik.onl"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "event-stream": "^3.3.4",
+    "expect": "^21.1.0",
+    "gulp-util": "^3.0.8",
+    "mocha": "^4.0.1",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^11.2.1",
+    "sinon": "^4.0.0",
+    "through2": "^2.0.3"
+  },
+  "scripts": {
+    "test": "nyc mocha --reporter spec"
+  }
+}

@@ -1,0 +1,7 @@
+sudo: false
+language: node_js
+node_js:
+  - "node"
+  - "6"
+after_script:
+  - nyc report --reporter=text-lcov | coveralls
