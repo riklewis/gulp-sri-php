@@ -4,9 +4,9 @@ Description
 Scan PHP files in Gulp and process script and stylesheet tags to add SRI attributes.
 
 I tried other plugins, but found the following issues...
-* gulp-sri-hash - uses Cheerio, which expects HTML and fails on PHP tags
-* gulp-srizer - requires OpenSSL and only works on Linux
-* gulp-sri - creates a JSON file but doesn't update the files inline
+* [gulp-sri-hash](https://www.npmjs.com/package/gulp-sri-hash) - uses Cheerio, which expects HTML and fails on PHP tags
+* [gulp-srizer](https://www.npmjs.com/package/gulp-srizer) - requires OpenSSL and doesn't work on Windows (uses 'cat')
+* [gulp-sri](https://www.npmjs.com/package/gulp-sri) - creates a JSON file with hashes but doesn't update the files inline
 
 For these reasons, I decided to write my own.
 
