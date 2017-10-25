@@ -1,6 +1,6 @@
 {
   "name": "gulp-sri-php",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Scan PHP files in Gulp and process script and stylesheet tags to add SRI attributes",
   "main": "index.js",
   "repository": {

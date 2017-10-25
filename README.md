@@ -13,7 +13,7 @@ For these reasons, I decided to write my own.
 Status
 ======
 
-[![NPM Version](http://img.shields.io/npm/v/gulp-sri-php.svg?style=flat)](https://www.npmjs.org/package/gulp-sri-php) [![Stability](https://img.shields.io/badge/stability-stable-brightgreen.svg?style=flat)](https://github.com/riklewis/gulp-sri-php) [![Dependencies](http://img.shields.io/david/riklewis/gulp-sri-php.svg?style=flat)](https://david-dm.org/riklewis/gulp-sri-php) [![Development Dependencies](http://img.shields.io/david/dev/riklewis/gulp-sri-php.svg?style=flat)](https://david-dm.org/riklewis/gulp-sri-php?type=dev) [![Build Status](http://img.shields.io/travis/riklewis/gulp-sri-php.svg?style=flat)](https://travis-ci.org/riklewis/gulp-sri-php)
+[![NPM Version](http://img.shields.io/npm/v/gulp-sri-php.svg?style=flat)](https://www.npmjs.org/package/gulp-sri-php) [![Stability](https://img.shields.io/badge/stability-experimental-orange.svg?style=flat)](https://github.com/riklewis/gulp-sri-php) [![Dependencies](http://img.shields.io/david/riklewis/gulp-sri-php.svg?style=flat)](https://david-dm.org/riklewis/gulp-sri-php) [![Development Dependencies](http://img.shields.io/david/dev/riklewis/gulp-sri-php.svg?style=flat)](https://david-dm.org/riklewis/gulp-sri-php?type=dev) [![Build Status](http://img.shields.io/travis/riklewis/gulp-sri-php.svg?style=flat)](https://travis-ci.org/riklewis/gulp-sri-php)
 [![Coverage Status](http://img.shields.io/coveralls/riklewis/gulp-sri-php.svg?style=flat)](https://coveralls.io/r/riklewis/gulp-sri-php?branch=master) [![Gratipay](https://img.shields.io/gratipay/project/gulp-sri-php.svg)](https://gratipay.com/gulp-sri-php/)
 
 Requirements
