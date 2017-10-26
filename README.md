@@ -48,7 +48,7 @@ Examples
   gulp.task("php",function(cb) {
     pump([
       gulp.src(phpFiles),
-      sri({verbose:true}),
+      sri({verbose:true,"algorithm":"sha384"}),
       gulp.dest("build")
     ],cb);
   });

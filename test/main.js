@@ -63,7 +63,9 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("sha256-DOkd/W7jLx2swQyb31v+kZ2Y9z7romuHeV9D9POBywA=");
+          expect(file.contents.toString()).to.satisfy(function(cont) {
+            return (cont.indexOf("sha256-DOkd/W7jLx2swQyb31v+kZ2Y9z7romuHeV9D9POBywA=")>-1 || cont.indexOf("sha256-C/9puvD3ClALXJ/dr62pxW460rFsss/VepWvS7JDOUo=")>-1); //LF or CRLF
+          });
           done();
         });
       });
@@ -74,7 +76,9 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("sha384-i2Zy8xcheu730XpEpNxLWtYctJ60DqnEaYmdxnueIa6on15NN/RKOMd++HVGTdKb");
+          expect(file.contents.toString()).to.satisfy(function(cont) {
+            return (cont.indexOf("sha384-i2Zy8xcheu730XpEpNxLWtYctJ60DqnEaYmdxnueIa6on15NN/RKOMd++HVGTdKb")>-1 || cont.indexOf("sha384-1NEQr6gLV3AKXyIou2LhPBN3hZRUPSRonReLRtMntlhvCCt73RxujSDBDrdNaM/U")>-1); //LF or CRLF
+          });
           done();
         });
       });
@@ -85,7 +89,9 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("sha512-NH0m4Mws0R+H1MXESjogwfykAeH/bMaoVomwHbBH1AeLesxVIohIXA0HzqjW/5m0RIUnVpNZmiGL+jFkJu8doQ==");
+          expect(file.contents.toString()).to.satisfy(function(cont) {
+            return (cont.indexOf("sha512-NH0m4Mws0R+H1MXESjogwfykAeH/bMaoVomwHbBH1AeLesxVIohIXA0HzqjW/5m0RIUnVpNZmiGL+jFkJu8doQ==")>-1 || cont.indexOf("sha512-68gQgFNeo3o1j/fyEySr6lReFf182IsYPW5YqwFlQPJz3ZuXgXciZ1POJHxwK9+aDU3PeCYOjaV0/CYeIYRk9g==")>-1); //LF or CRLF
+          });
           done();
         });
       });
@@ -118,7 +124,9 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("sha256-DOkd/W7jLx2swQyb31v+kZ2Y9z7romuHeV9D9POBywA=");
+          expect(file.contents.toString()).to.satisfy(function(cont) {
+            return (cont.indexOf("sha256-DOkd/W7jLx2swQyb31v+kZ2Y9z7romuHeV9D9POBywA=")>-1 || cont.indexOf("sha256-C/9puvD3ClALXJ/dr62pxW460rFsss/VepWvS7JDOUo=")>-1); //LF or CRLF
+          });
           done();
         });
       });
@@ -129,7 +137,9 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("sha384-i2Zy8xcheu730XpEpNxLWtYctJ60DqnEaYmdxnueIa6on15NN/RKOMd++HVGTdKb");
+          expect(file.contents.toString()).to.satisfy(function(cont) {
+            return (cont.indexOf("sha384-i2Zy8xcheu730XpEpNxLWtYctJ60DqnEaYmdxnueIa6on15NN/RKOMd++HVGTdKb")>-1 || cont.indexOf("sha384-1NEQr6gLV3AKXyIou2LhPBN3hZRUPSRonReLRtMntlhvCCt73RxujSDBDrdNaM/U")>-1); //LF or CRLF
+          });
           done();
         });
       });
@@ -140,7 +150,9 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("sha512-NH0m4Mws0R+H1MXESjogwfykAeH/bMaoVomwHbBH1AeLesxVIohIXA0HzqjW/5m0RIUnVpNZmiGL+jFkJu8doQ==");
+          expect(file.contents.toString()).to.satisfy(function(cont) {
+            return (cont.indexOf("sha512-NH0m4Mws0R+H1MXESjogwfykAeH/bMaoVomwHbBH1AeLesxVIohIXA0HzqjW/5m0RIUnVpNZmiGL+jFkJu8doQ==")>-1 || cont.indexOf("sha512-68gQgFNeo3o1j/fyEySr6lReFf182IsYPW5YqwFlQPJz3ZuXgXciZ1POJHxwK9+aDU3PeCYOjaV0/CYeIYRk9g==")>-1); //LF or CRLF
+          });
           done();
         });
       });
@@ -173,7 +185,9 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("sha256-DOkd/W7jLx2swQyb31v+kZ2Y9z7romuHeV9D9POBywA=");
+          expect(file.contents.toString()).to.satisfy(function(cont) {
+            return (cont.indexOf("sha256-DOkd/W7jLx2swQyb31v+kZ2Y9z7romuHeV9D9POBywA=")>-1 || cont.indexOf("sha256-C/9puvD3ClALXJ/dr62pxW460rFsss/VepWvS7JDOUo=")>-1); //LF or CRLF
+          });
           done();
         });
       });
@@ -184,7 +198,9 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("sha384-i2Zy8xcheu730XpEpNxLWtYctJ60DqnEaYmdxnueIa6on15NN/RKOMd++HVGTdKb");
+          expect(file.contents.toString()).to.satisfy(function(cont) {
+            return (cont.indexOf("sha384-i2Zy8xcheu730XpEpNxLWtYctJ60DqnEaYmdxnueIa6on15NN/RKOMd++HVGTdKb")>-1 || cont.indexOf("sha384-1NEQr6gLV3AKXyIou2LhPBN3hZRUPSRonReLRtMntlhvCCt73RxujSDBDrdNaM/U")>-1); //LF or CRLF
+          });
           done();
         });
       });
@@ -195,7 +211,9 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("sha512-NH0m4Mws0R+H1MXESjogwfykAeH/bMaoVomwHbBH1AeLesxVIohIXA0HzqjW/5m0RIUnVpNZmiGL+jFkJu8doQ==");
+          expect(file.contents.toString()).to.satisfy(function(cont) {
+            return (cont.indexOf("sha512-NH0m4Mws0R+H1MXESjogwfykAeH/bMaoVomwHbBH1AeLesxVIohIXA0HzqjW/5m0RIUnVpNZmiGL+jFkJu8doQ==")>-1 || cont.indexOf("sha512-68gQgFNeo3o1j/fyEySr6lReFf182IsYPW5YqwFlQPJz3ZuXgXciZ1POJHxwK9+aDU3PeCYOjaV0/CYeIYRk9g==")>-1); //LF or CRLF
+          });
           done();
         });
       });
