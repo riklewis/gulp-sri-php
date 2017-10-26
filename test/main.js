@@ -52,7 +52,7 @@ describe("gulp-sri-php",function() {
         stream.write(temp);
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
-          expect(file.contents.toString()).to.contain("crossorigin=");
+          expect(file.contents.toString()).to.contain("crossorigin=\"anonymous\"");
           done();
         });
       });
@@ -217,11 +217,88 @@ describe("gulp-sri-php",function() {
           done();
         });
       });
+      it("should *not* set the integrity attribute if it already exists",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/script.js\" integrity=\"test\"></script></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.contain("integrity=\"test\"");
+          done();
+        });
+      });
+      it("should *not* set the crossorigin attribute if it already exists",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/script.js\" crossorigin=\"test\"></script></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.contain("crossorigin=\"test\"");
+          done();
+        });
+      });
+      it("should *not* modify any other attributes in the tag (value pair)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/script.js\" test=\"test\"></script></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.contain("test=\"test\"");
+          done();
+        });
+      });
+      it("should *not* modify any other attributes in the tag (minimised)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/script.js\" test></script></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.contain("test");
+          done();
+        });
+      });
+      it("should *not* process tags which reference external files (https://)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"https://test.com/script.js\"></script></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.not.contain("integrity");
+          done();
+        });
+      });
+      it("should *not* process tags which reference external files (http://)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"http://test.com/script.js\"></script></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.not.contain("integrity");
+          done();
+        });
+      });
+      it("should *not* process tags which reference external files (//)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"//test.com/script.js\"></script></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.not.contain("integrity");
+          done();
+        });
+      });
     });
     describe("File: Stylesheet (.css)",function() {
       it("should add integrity attribute for a stylesheet file (double quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -232,7 +309,7 @@ describe("gulp-sri-php",function() {
       });
       it("should add crossorigin attribute for a stylesheet file (double quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -243,7 +320,7 @@ describe("gulp-sri-php",function() {
       });
       it("should calculate 'sha256' hash for a stylesheet file (double quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -256,7 +333,7 @@ describe("gulp-sri-php",function() {
       });
       it("should calculate 'sha384' hash for a stylesheet file (double quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -269,7 +346,7 @@ describe("gulp-sri-php",function() {
       });
       it("should calculate 'sha512' hash for a stylesheet file (double quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\"></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -282,7 +359,7 @@ describe("gulp-sri-php",function() {
       });
       it("should add integrity attribute for a stylesheet file (single quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -293,7 +370,7 @@ describe("gulp-sri-php",function() {
       });
       it("should add crossorigin attribute for a stylesheet file (single quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -304,7 +381,7 @@ describe("gulp-sri-php",function() {
       });
       it("should calculate 'sha256' hash for a stylesheet file (single quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -317,7 +394,7 @@ describe("gulp-sri-php",function() {
       });
       it("should calculate 'sha384' hash for a stylesheet file (single quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -330,7 +407,7 @@ describe("gulp-sri-php",function() {
       });
       it("should calculate 'sha512' hash for a stylesheet file (single quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src='test/fixtures/style.css'></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -343,7 +420,7 @@ describe("gulp-sri-php",function() {
       });
       it("should add integrity attribute for a stylesheet file (no quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -354,7 +431,7 @@ describe("gulp-sri-php",function() {
       });
       it("should add crossorigin attribute for a stylesheet file (no quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -365,7 +442,7 @@ describe("gulp-sri-php",function() {
       });
       it("should calculate 'sha256' hash for a stylesheet file (no quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -378,7 +455,7 @@ describe("gulp-sri-php",function() {
       });
       it("should calculate 'sha384' hash for a stylesheet file (no quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -391,7 +468,7 @@ describe("gulp-sri-php",function() {
       });
       it("should calculate 'sha512' hash for a stylesheet file (no quotes)",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
-        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></script></html>"),path:floc});
+        var temp = new util.File({contents:new Buffer("<html><script src=test/fixtures/style.css></html>"),path:floc});
         var stream = srihash();
         stream.write(temp);
         stream.once("data",function(file) {
@@ -399,6 +476,83 @@ describe("gulp-sri-php",function() {
           expect(file.contents.toString()).to.satisfy(function(cont) {
             return (cont.indexOf("sha512-JC21+u0QC09tZZrj4vj1Oyh7rbYTt1dmWQoi1+A5fbilGVwegMHM2Zw74P0dhjASLyA54PKZMaH6cpUmXS3zxQ==")>-1 || cont.indexOf("sha512-ftB4mRK4C/3JM0BC/Q9q7FuPYth3lfiZnad+4TjkwhQE5Iwus0svLKUZePWsVF4BcHv5tqxAkSmtbbJlC1BbSQ==")>-1); //LF or CRLF
           });
+          done();
+        });
+      });
+      it("should *not* set the integrity attribute if it already exists",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\" integrity=\"test\"></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.contain("integrity=\"test\"");
+          done();
+        });
+      });
+      it("should *not* set the crossorigin attribute if it already exists",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\" crossorigin=\"test\"></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.contain("crossorigin=\"test\"");
+          done();
+        });
+      });
+      it("should *not* modify any other attributes in the tag (value pair)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\" test=\"test\"></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.contain("test=\"test\"");
+          done();
+        });
+      });
+      it("should *not* modify any other attributes in the tag (minimised)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"test/fixtures/style.css\" test></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.contain("test");
+          done();
+        });
+      });
+      it("should *not* process tags which reference external files (https://)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"https://test.com/style.css\"></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.not.contain("integrity");
+          done();
+        });
+      });
+      it("should *not* process tags which reference external files (http://)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><script src=\"http://test.com/style.css\"></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.not.contain("integrity");
+          done();
+        });
+      });
+      it("should *not* process tags which reference external files (//)",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><link rel=\"stylesheet\" href=\"//test.com/style.css\"></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.not.contain("integrity");
           done();
         });
       });
