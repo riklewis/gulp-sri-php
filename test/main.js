@@ -249,7 +249,7 @@ describe("gulp-sri-php",function() {
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
           expect(file.contents.toString()).to.satisfy(function(cont) {
-            return (cont.indexOf("sha256-JCGd+S1MWDg5GctikFvioRZbk7zIiTJUpQTK0s2M3lM=")>-1 || cont.indexOf("sha256-C/9puvD3ClALXJ/dr62pxW460rFsss/VepWvS7JDOUo=")>-1); //LF or CRLF
+            return (cont.indexOf("sha256-JCGd+S1MWDg5GctikFvioRZbk7zIiTJUpQTK0s2M3lM=")>-1 || cont.indexOf("sha256-kxIB3+tJkVrWzTR5pv1Thudusy5b9fbh9M10oBgKFuw=")>-1); //LF or CRLF
           });
           done();
         });
@@ -262,7 +262,7 @@ describe("gulp-sri-php",function() {
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
           expect(file.contents.toString()).to.satisfy(function(cont) {
-            return (cont.indexOf("sha384-ZoZkZG8em6hlsSqs3rU3d1NUjVggKEZocST+T6YljUyMrkORaC1v/SpErp5ClzXH")>-1 || cont.indexOf("sha384-1NEQr6gLV3AKXyIou2LhPBN3hZRUPSRonReLRtMntlhvCCt73RxujSDBDrdNaM/U")>-1); //LF or CRLF
+            return (cont.indexOf("sha384-ZoZkZG8em6hlsSqs3rU3d1NUjVggKEZocST+T6YljUyMrkORaC1v/SpErp5ClzXH")>-1 || cont.indexOf("sha384-ygShAJV2Px1eG39+2qyXk79dziKUZASMT1JsVD26Zd2/0o/jCVvRbuB6QF/2vv/6")>-1); //LF or CRLF
           });
           done();
         });
@@ -275,7 +275,7 @@ describe("gulp-sri-php",function() {
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
           expect(file.contents.toString()).to.satisfy(function(cont) {
-            return (cont.indexOf("sha512-JC21+u0QC09tZZrj4vj1Oyh7rbYTt1dmWQoi1+A5fbilGVwegMHM2Zw74P0dhjASLyA54PKZMaH6cpUmXS3zxQ==")>-1 || cont.indexOf("sha512-68gQgFNeo3o1j/fyEySr6lReFf182IsYPW5YqwFlQPJz3ZuXgXciZ1POJHxwK9+aDU3PeCYOjaV0/CYeIYRk9g==")>-1); //LF or CRLF
+            return (cont.indexOf("sha512-JC21+u0QC09tZZrj4vj1Oyh7rbYTt1dmWQoi1+A5fbilGVwegMHM2Zw74P0dhjASLyA54PKZMaH6cpUmXS3zxQ==")>-1 || cont.indexOf("sha512-ftB4mRK4C/3JM0BC/Q9q7FuPYth3lfiZnad+4TjkwhQE5Iwus0svLKUZePWsVF4BcHv5tqxAkSmtbbJlC1BbSQ==")>-1); //LF or CRLF
           });
           done();
         });
@@ -310,7 +310,7 @@ describe("gulp-sri-php",function() {
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
           expect(file.contents.toString()).to.satisfy(function(cont) {
-            return (cont.indexOf("sha256-JCGd+S1MWDg5GctikFvioRZbk7zIiTJUpQTK0s2M3lM=")>-1 || cont.indexOf("sha256-C/9puvD3ClALXJ/dr62pxW460rFsss/VepWvS7JDOUo=")>-1); //LF or CRLF
+            return (cont.indexOf("sha256-JCGd+S1MWDg5GctikFvioRZbk7zIiTJUpQTK0s2M3lM=")>-1 || cont.indexOf("sha256-kxIB3+tJkVrWzTR5pv1Thudusy5b9fbh9M10oBgKFuw=")>-1); //LF or CRLF
           });
           done();
         });
@@ -323,7 +323,7 @@ describe("gulp-sri-php",function() {
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
           expect(file.contents.toString()).to.satisfy(function(cont) {
-            return (cont.indexOf("sha384-ZoZkZG8em6hlsSqs3rU3d1NUjVggKEZocST+T6YljUyMrkORaC1v/SpErp5ClzXH")>-1 || cont.indexOf("sha384-1NEQr6gLV3AKXyIou2LhPBN3hZRUPSRonReLRtMntlhvCCt73RxujSDBDrdNaM/U")>-1); //LF or CRLF
+            return (cont.indexOf("sha384-ZoZkZG8em6hlsSqs3rU3d1NUjVggKEZocST+T6YljUyMrkORaC1v/SpErp5ClzXH")>-1 || cont.indexOf("sha384-ygShAJV2Px1eG39+2qyXk79dziKUZASMT1JsVD26Zd2/0o/jCVvRbuB6QF/2vv/6")>-1); //LF or CRLF
           });
           done();
         });
@@ -336,7 +336,7 @@ describe("gulp-sri-php",function() {
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
           expect(file.contents.toString()).to.satisfy(function(cont) {
-            return (cont.indexOf("sha512-JC21+u0QC09tZZrj4vj1Oyh7rbYTt1dmWQoi1+A5fbilGVwegMHM2Zw74P0dhjASLyA54PKZMaH6cpUmXS3zxQ==")>-1 || cont.indexOf("sha512-68gQgFNeo3o1j/fyEySr6lReFf182IsYPW5YqwFlQPJz3ZuXgXciZ1POJHxwK9+aDU3PeCYOjaV0/CYeIYRk9g==")>-1); //LF or CRLF
+            return (cont.indexOf("sha512-JC21+u0QC09tZZrj4vj1Oyh7rbYTt1dmWQoi1+A5fbilGVwegMHM2Zw74P0dhjASLyA54PKZMaH6cpUmXS3zxQ==")>-1 || cont.indexOf("sha512-ftB4mRK4C/3JM0BC/Q9q7FuPYth3lfiZnad+4TjkwhQE5Iwus0svLKUZePWsVF4BcHv5tqxAkSmtbbJlC1BbSQ==")>-1); //LF or CRLF
           });
           done();
         });
@@ -371,7 +371,7 @@ describe("gulp-sri-php",function() {
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
           expect(file.contents.toString()).to.satisfy(function(cont) {
-            return (cont.indexOf("sha256-JCGd+S1MWDg5GctikFvioRZbk7zIiTJUpQTK0s2M3lM=")>-1 || cont.indexOf("sha256-C/9puvD3ClALXJ/dr62pxW460rFsss/VepWvS7JDOUo=")>-1); //LF or CRLF
+            return (cont.indexOf("sha256-JCGd+S1MWDg5GctikFvioRZbk7zIiTJUpQTK0s2M3lM=")>-1 || cont.indexOf("sha256-kxIB3+tJkVrWzTR5pv1Thudusy5b9fbh9M10oBgKFuw=")>-1); //LF or CRLF
           });
           done();
         });
@@ -384,7 +384,7 @@ describe("gulp-sri-php",function() {
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
           expect(file.contents.toString()).to.satisfy(function(cont) {
-            return (cont.indexOf("sha384-ZoZkZG8em6hlsSqs3rU3d1NUjVggKEZocST+T6YljUyMrkORaC1v/SpErp5ClzXH")>-1 || cont.indexOf("sha384-1NEQr6gLV3AKXyIou2LhPBN3hZRUPSRonReLRtMntlhvCCt73RxujSDBDrdNaM/U")>-1); //LF or CRLF
+            return (cont.indexOf("sha384-ZoZkZG8em6hlsSqs3rU3d1NUjVggKEZocST+T6YljUyMrkORaC1v/SpErp5ClzXH")>-1 || cont.indexOf("sha384-ygShAJV2Px1eG39+2qyXk79dziKUZASMT1JsVD26Zd2/0o/jCVvRbuB6QF/2vv/6")>-1); //LF or CRLF
           });
           done();
         });
@@ -397,7 +397,7 @@ describe("gulp-sri-php",function() {
         stream.once("data",function(file) {
           expect(file.isBuffer()).to.be.true;
           expect(file.contents.toString()).to.satisfy(function(cont) {
-            return (cont.indexOf("sha512-JC21+u0QC09tZZrj4vj1Oyh7rbYTt1dmWQoi1+A5fbilGVwegMHM2Zw74P0dhjASLyA54PKZMaH6cpUmXS3zxQ==")>-1 || cont.indexOf("sha512-68gQgFNeo3o1j/fyEySr6lReFf182IsYPW5YqwFlQPJz3ZuXgXciZ1POJHxwK9+aDU3PeCYOjaV0/CYeIYRk9g==")>-1); //LF or CRLF
+            return (cont.indexOf("sha512-JC21+u0QC09tZZrj4vj1Oyh7rbYTt1dmWQoi1+A5fbilGVwegMHM2Zw74P0dhjASLyA54PKZMaH6cpUmXS3zxQ==")>-1 || cont.indexOf("sha512-ftB4mRK4C/3JM0BC/Q9q7FuPYth3lfiZnad+4TjkwhQE5Iwus0svLKUZePWsVF4BcHv5tqxAkSmtbbJlC1BbSQ==")>-1); //LF or CRLF
           });
           done();
         });
