@@ -1,7 +1,7 @@
 Description
 ===========
 
-Scan PHP files in Gulp and process script and stylesheet tags to add Sub-Resource Integrity (SRI) attributes.
+Scan PHP (or other HTML-based) files in Gulp and process script and stylesheet tags to add Sub-Resource Integrity (SRI) attributes.
 
 I tried other plugins, but found the following issues...
 * [gulp-sri-hash](https://www.npmjs.com/package/gulp-sri-hash) - uses Cheerio, which expects HTML and fails on PHP tags
@@ -16,6 +16,8 @@ Tags will be ignored for the following reasons...
 * It already has an "integrity" attribute
 * It has an absolute reference (eg. starting http(s)://)
 * It's so mangled that the file path cannot be determined
+
+Just to clarify, this plugin isn't specifically for PHP files, but will work with HTML tags in any file, such as a PHP file, without worrying about the non-HTML parts.
 
 Status
 ======
