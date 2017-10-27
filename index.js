@@ -9,7 +9,7 @@ var PluginError = util.PluginError;
 var options = {};
 var cacheArray = [];
 var algorithms = ["sha256","sha384","sha512"];
-var version = "1.1.3"; /* must match package.json file */
+var version = "1.2.0"; /* must match package.json file */
 
 function gulpSriPhp(opts) {
   options = opts;
@@ -45,7 +45,7 @@ function gulpSriPhp(opts) {
     if(options.verbose) {
       console.log("[gulp-sri-php@"+version+"] processing "+file.relative+"...");
     }
-    options.base = file.base || file.basename;
+    options.base = file.base;
     var cont = processScripts(processStylesheets(file.contents.toString()));
     file.contents = new Buffer(cont);
     this.push(file);
@@ -55,7 +55,7 @@ function gulpSriPhp(opts) {
 }
 
 function processStylesheets(orig) {
-  var regex = /<link.*rel=['"]{0,1}stylesheet['"]{0,1}[^>]*>/gmi;
+  var regex = /<link.*?rel=['"]{0,1}stylesheet['"]{0,1}[^>]*>/gmi;
   var cont = orig;
   var res = null;
   while((res = regex.exec(orig))) {
@@ -81,7 +81,7 @@ function processStylesheets(orig) {
 }
 
 function processScripts(orig) {
-  var regex = /<script.*src=['"]{0,1}([^'"> ]*)[^>]*>/gmi;
+  var regex = /<script.*?src=['"]{0,1}([^'"]*)[^>]*>/gmi;
   var cont = orig;
   var res = null;
   while((res = regex.exec(orig))) {
