@@ -9,7 +9,7 @@ var PluginError = util.PluginError;
 var options = {};
 var cacheArray = [];
 var algorithms = ["sha256","sha384","sha512"];
-var version = "1.2.1"; /* must match package.json file */
+var version = "1.2.2"; /* must match package.json file */
 
 function gulpSriPhp(opts) {
   options = opts;
