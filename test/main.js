@@ -642,13 +642,11 @@ describe("gulp-sri-php",function() {
       });
     });
     describe("Option: verbose",function() {
-      var sandbox;
       beforeEach(function() {
-        sandbox = sinon.sandbox.create();
-        sandbox.spy(console,"log");
+        sinon.spy(console,"log");
       });
       afterEach(function() {
-        sandbox.restore();
+        sinon.restore();
       });
       it("should add integrity attribute with verbose messaging off by default",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
