@@ -423,6 +423,17 @@ describe("gulp-sri-php",function() {
           done();
         });
       });
+      it("should add integrity attribute for alternate stylesheet",function(done) {
+        var floc = path.normalize(process.cwd()+"/index.php");
+        var temp = new util.File({contents:new Buffer("<html><link rel=\"alternate stylesheet\" href=\"test/fixtures/style.css\"></html>"),path:floc});
+        var stream = srihash();
+        stream.write(temp);
+        stream.once("data",function(file) {
+          expect(file.isBuffer()).to.be.true;
+          expect(file.contents.toString()).to.contain("integrity=");
+          done();
+        });
+      });
       it("should *not* set the integrity attribute if it already exists",function(done) {
         var floc = path.normalize(process.cwd()+"/index.php");
         var temp = new util.File({contents:new Buffer("<html><link rel=\"stylesheet\" href=\"test/fixtures/style.css\" integrity=\"test\"></html>"),path:floc});
