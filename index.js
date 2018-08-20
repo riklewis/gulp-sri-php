@@ -55,7 +55,7 @@ function gulpSriPhp(opts) {
 }
 
 function processStylesheets(orig) {
-  var regex = /<link.*?rel=['"]{0,1}stylesheet['"]{0,1}[^>]*>/gmi;
+  var regex = /<link.*?rel=['"]{0,1}(alternate )?stylesheet['"]{0,1}[^>]*>/gmi;
   var cont = orig;
   var res = null;
   while((res = regex.exec(orig))) {
