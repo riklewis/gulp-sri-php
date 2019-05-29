@@ -94,7 +94,7 @@ Configuration options
 * **verbose**: Will output additional messages to the console (boolean - default: false)
 
 
-Please donate
-=============
+Treat me to a beer!
+===================
 
-[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue.svg)](https://www.paypal.me/riklewis) [![LiberaPay](https://img.shields.io/badge/LiberaPay-Donate-yellow.svg)](https://liberapay.com/riklewis/donate)
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue.svg)](https://www.paypal.me/riklewis)
